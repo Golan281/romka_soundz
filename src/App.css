@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 20vmin;
   pointer-events: none;
 }
 
@@ -14,25 +14,85 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #9BD1AB;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #2A5656;
 }
 
+.blog-post {
+  padding: 40px;
+}
+/* footer {
+  background-color: #9BD1AB;
+  padding: none;
+  margin: none;
+} */
+
+div > img {
+  border-radius: 10px;
+  width: 40%;
+  height: 40%;
+}
+a, a:visited {
+  text-decoration: none;
+  color: #065774;
+}
+
+a.active .btn {
+  background-color:#2A5656;
+  border:#065774;
+  /* change this to maybe btn a.active? */
+}
+
+/* a:hover {
+  cursor: pointer;
+  opacity: 0.7;
+} */
+
+.btn {
+  transition-duration: 0.2s;
+  background-color: #FF9B6A; 
+  color: #FFEF99;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 2px 4px;
+  margin: 6px;
+  min-width: 125px;
+  max-width: 125px;
+  min-height: 50px;
+  max-height: 50px;
+  font-size: 140%;
+  
+}
+
+.btn.sub {
+  min-width: 170px;
+  max-width: 170px;
+  
+}
+
+.btn:hover {
+  color: #FF9B6A; 
+  background-color: #FFEF99;
+  cursor: pointer;
+  box-shadow: 1px 2px;
+}
+
+
 .App-link {
-  color: #61dafb;
+  color: #065774;
 }
 
 @keyframes App-logo-spin {
   from {
-    transform: rotate(0deg);
+    transform:rotateY(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotateY(60deg);
   }
 }
