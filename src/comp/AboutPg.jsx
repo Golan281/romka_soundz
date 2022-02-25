@@ -6,16 +6,32 @@ export const AboutPg = () => {
         <div>
             {/* <img className="img-resize" src={romka_main_img} className="main-img" alt="romkasoundz-profile-img"></img> */}
             {/* resize img asap */}
-            <h1>About/Bio</h1>
-            <p>
-            bio bio bio bio bio bio<br></br>
-            bio bio bio bio bio bio<br></br>
-            bio bio bio bio bio bio<br></br>
-            bio bio bio bio bio bio
+            <h1>Bio</h1>
+            <p className='rtl'>
+                ממסיבות במקלטים בסוף שנות ה-90, דרך הבארים, המועדונים והגגות של דרום תל אביב
+                <br></br>
+                ועד לרחבות אקסטטיות במרכז אמריקה - הדרך שלי, רומן אוסטרובסקי (או ROMKA) בעולם התקלוט
+                <br></br>
+                מתפתלת ונפתחת כבר מעל 20 שנה.
+                <br></br>
+                בין אם זו חתונה ישראלית או מסיבת טבע מחתרתית, אני מצליח להביא את האוזן המקורית,
+                <br></br>
+                הלב הפתוח והחיוך שיודע להרכיב את הפאזל המוזיקלי הנכון לכל אירוע.
+                <br></br>
+                עם מגוון השפעות מכל העולם, אני אוהב לנוע בחופשיות בין ז'אנרים וסגנונות,
+                <br></br>
+                שואל קצת מכולם מבלי להתחייב,
+                <br></br>
+                מדלג בין ביטים אלקטרוניים גלובאליים לקטעים Fאנקיים מזיזי ישבנים.
+                <br></br>
+                ממקסס חדש וישן, מיינסטרים ואלטרנטיבי והכל בקלילות וברגישות לרחבה,
+                <br></br>
+                לאנשים ולאנרגיה המתחלפת.
+                <br></br>
             </p>
 
             <div className="img-resize">
-                <img  src={romka_main_img} className="main-img" alt="romkasoundz-profile-img" title="best vid of romka will be placed here"></img>
+                <img src={romka_main_img} className="main-img" alt="romkasoundz-profile-img" title="best vid of romka will be placed here"></img>
             </div>
             <button
                 className="btn sub"

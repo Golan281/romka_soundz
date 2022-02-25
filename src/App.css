@@ -33,6 +33,10 @@
   margin: none;
 } */
 
+p.rtl {
+  direction: rtl;
+}
+
 div > img {
   border-radius: 10px;
   width: 40%;
