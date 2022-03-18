@@ -26,7 +26,7 @@ export const Sub = () => {
           <input
             className="input"
             name="firstName"
-            value={formText.firstName}
+            // value={formText.firstName}
             type="text"
             htmlFor="firstName"
             placeholder="Add firstName here"
@@ -36,7 +36,7 @@ export const Sub = () => {
           <input
             className="input"
             name="lastName"
-            value={formText.lastName}
+            // value={formText.lastName}
             type="text"
             htmlFor="lastName"
             placeholder="Add lastName here"
@@ -46,7 +46,7 @@ export const Sub = () => {
           <input
             className="input"
             name="email"
-            value={formText.email}
+            // value={formText.email}
             id=""
             cols="20"
             rows="4"

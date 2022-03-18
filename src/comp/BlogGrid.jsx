@@ -38,7 +38,6 @@ export const BlogGrid = () => {
             link: '',
         },
     ]
-    console.log(blogPosts);
     return (
         <div key="blog-grid" className="blog-grid">
             {blogPosts.map((eachPost)=>

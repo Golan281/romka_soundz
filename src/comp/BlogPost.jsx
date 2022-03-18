@@ -10,7 +10,7 @@ export const BlogPost = (props) => {
       <h1>{title}</h1>
       <div>
         <p className='rtl single-post-content'>{snippet}...</p>
-        <img className='blog-img' src={imgSrc}></img>
+        <img className='blog-img' src={imgSrc} alt={`${imgSrc}`}></img>
         {/* <p>{urlParam}</p> */}
       </div>
     </div>
