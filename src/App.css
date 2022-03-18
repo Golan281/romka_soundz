@@ -27,11 +27,6 @@
 .blog-post {
   padding: 40px;
 }
-/* footer {
-  background-color: #9BD1AB;
-  padding: none;
-  margin: none;
-} */
 
 p.rtl {
   direction: rtl;
@@ -50,7 +45,6 @@ a, a:visited {
 a.active .btn {
   background-color:#2A5656;
   border:#065774;
-  /* change this to maybe btn a.active? */
 }
 
 /* a:hover {
@@ -74,9 +68,8 @@ a.active .btn {
   
 }
 
-.btn.sub {
-  min-width: 170px;
-  max-width: 170px;
+.btn.form-btn {
+  margin: 40px;
   
 }
 
@@ -90,6 +83,50 @@ a.active .btn {
 
 .App-link {
   color: #065774;
+}
+
+.input-form {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.input, .input:focus {
+  border: none;
+  color:#065774;
+  background-color:#FFF4B8;
+  box-shadow: 1px 2px;
+  border-radius: 8px;
+  padding: 2px;
+  margin: 2px;
+}
+
+label {
+  padding: 20px;
+}
+
+.single-post {
+  background-color:#E1F1E6;
+  box-shadow: 1px 1px;
+  border-radius: 8px;
+  padding: 2px;
+  margin: 20px;
+  min-width: 200px;
+  max-width:400px; 
+}
+
+
+.blog-img {
+  min-width: 100px;
+  max-width:160px; 
+  border: 1px solid #FFEF99;
+  margin-bottom: 20px;
+  
+}
+
+.iframe-box {
+  border: 1px solid #FFEF99;
+  border-radius: 8px;
+
 }
 
 @keyframes App-logo-spin {

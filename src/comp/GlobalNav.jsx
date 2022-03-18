@@ -8,10 +8,8 @@ export const GlobalNav = () => {
             <NavLink to="./about"><button className="btn">Romka</button></NavLink>
             <NavLink to="./music"><button className="btn">Music</button></NavLink>
             <NavLink to="./blog"><button className="btn">Blog</button></NavLink>
+            <NavLink to="./subscribe"><button className="btn">Sub</button></NavLink>
             </nav>
-            {/* <a href="#"><button className="btn">Romka</button></a>
-            <a href="#"><button className="btn">Music</button></a>
-            <a href="#"><button className="btn">Blog</button></a> */}
         </Line>
     )
 };

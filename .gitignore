@@ -10,6 +10,7 @@
 
 # production
 /build
+/build.zip
 
 # misc
 .DS_Store
@@ -24,3 +25,10 @@ yarn-error.log*
 /notes.md
 # Local Netlify folder
 .netlify
+
+# other
+/src/config/
+/src/comp/Blog/
+/src/Hooks
+
+

@@ -1,5 +1,6 @@
 // import romka_main_img from '../../src/img'
-import romka_main_img from '../img/romka_main_img.JPG';
+// import romka_main_img from '../img/romka_main_img.JPG';
+import { IframeTube } from './Music/IframeTube';
 
 export const AboutPg = () => {
     return (
@@ -29,15 +30,8 @@ export const AboutPg = () => {
                 לאנשים ולאנרגיה המתחלפת.
                 <br></br>
             </p>
+            <IframeTube/>
 
-            <div className="img-resize">
-                <img src={romka_main_img} className="main-img" alt="romkasoundz-profile-img" title="best vid of romka will be placed here"></img>
-            </div>
-            <button
-                className="btn sub"
-                onClick={() => console.log('collect-emails-onSubmit')}>
-                Subscribe
-            </button>
         </div>
     )
 }
