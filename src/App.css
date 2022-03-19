@@ -69,7 +69,9 @@ a.active .btn {
 }
 
 .btn.form-btn {
-  margin: 40px;
+  margin: 60px;
+  /* padding: 10px */
+  min-width: 80px;
   
 }
 
@@ -112,6 +114,8 @@ label {
   margin: 20px;
   min-width: 200px;
   max-width:400px; 
+  /* border: 1px solid #FFEF99; */
+  border-radius: 8px;
 }
 
 
@@ -135,5 +139,10 @@ label {
   }
   to {
     transform: rotateY(60deg);
+  }
+}
+@media (max-width: 400px) {
+  .nav-grid {
+    grid-template-columns: repeat(2,2fr);
   }
 }
