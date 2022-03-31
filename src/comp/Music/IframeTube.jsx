@@ -4,7 +4,7 @@ export const IframeTube = () => {
     
     return (
         <div>
-            <iframe className="iframe-box" width="336" height="189" src="https://www.youtube.com/embed/IlRO34_jzMk" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+            <iframe className="iframe-box" src="https://www.youtube.com/embed/IlRO34_jzMk" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
         </div>
 
     )

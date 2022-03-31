@@ -8,11 +8,11 @@ export const GlobalFooter = () => {
             <footer className='secondary-footer'>
                 {/* <Line> currently not-aligned - need to use myNotesLine*/}
                 <p>
-                    <MdEmail/>
-                    <MdLocalPhone />
-                    <MdFacebook/>
-                    <CgInstagram/>
-                    <CgYoutube/> <br></br>
+                    <MdLocalPhone  size="3rem"/>
+                    <MdEmail size="3rem"/>
+                    <CgInstagram size="3rem"/>
+                    <MdFacebook size="3rem"/>  
+                    <CgYoutube size="3rem"/><br></br>
                     &#169; All rights reserved to Roman Ostrovsky 2022 
                 </p> 
                 {/* </Line> */}

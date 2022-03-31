@@ -13,7 +13,7 @@ export const BlogGrid = () => {
     const blogPosts = [
         {
             title: 'Anatalian Rock',
-            snippet: 'ב-1923, הגיעו לקיצן יותר מ-600 שנות קיום של האימפריה ה-',
+            snippet: 'ב-1923, הגיעו לקיצן יותר מ-600 שנות קיום של האימפריה העותמנית, ועל חורבותיה החלה להיבנות מדינת טורקיה המודרנית, בהשראת מנהיגה הראשון מוסטפא כמאל.',
             content: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem',
             imgSrc: ant_rock,
             // urlParam: 'or-should-it-be-route?',
@@ -21,7 +21,7 @@ export const BlogGrid = () => {
         },
         {
             title: 'Cumbia',
-            snippet: '"האנשים העניים, חופשיים ועבדים, חומים, שחורים , פועלים',
+            snippet: 'האנשים העניים, חופשיים ועבדים, חומים, שחורים , פועלים, שורפי הפחם והדייגים עמדו יחפים. הם, שהעדיפו את החופש הטבעי של המעמד שלהם רקדו באוויר הפתוח לצלילי הרעם של התופים האפריקאיים שנוגנו עם ידיהם על הראש',
             content: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem',
             imgSrc: cumbia,
             //imgSrc will be replaced for more convenice to romka somehow
@@ -30,7 +30,7 @@ export const BlogGrid = () => {
         },
         {
             title: 'Kuduro',
-            snippet: '"קודורו זו אמנות, קודורו זה ריקוד, קודורו זו תרבות...',
+            snippet: '"קודורו זו אמנות, קודורו זה ריקוד, קודורו זו תרבות...זה השורש של אנגולה. זה הפך לחלק מהדם שלנו, החיים שלנו...אין אדם אחד באנגולה שלא חי את אורח החיים של הקודורו" אומר Zoca Zoca, אחד מיוצרי הקודורו הבולטים.',
             content: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem',
             imgSrc: kuduro,
             //imgSrc will be replaced for more convenice to romka somehow
