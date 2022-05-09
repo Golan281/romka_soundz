@@ -31,6 +31,7 @@ export const Sub = () => {
         lastName: "",
         email: "",
       });
+      console.log(subscriber)
       Swal.fire({
         title: `Thanks for subscribing, ${formText.firstName} :)`,
         ...helperProps.swalProps,
@@ -59,6 +60,7 @@ export const Sub = () => {
             type="text"
             htmlFor="firstName"
             placeholder="First name"
+            onChange={()=>console.log('onChng')}
             required
             ></input>
         </label>
@@ -70,13 +72,15 @@ export const Sub = () => {
             type="text"
             htmlFor="lastName"
             placeholder="Last Name"
+            onChange={()=>console.log('onChng')}
             required
-          ></input>
+            ></input>
         </label>
         <label type="text" htmlFor="email">
           <input
             className="input"
             name="email"
+            onChange={()=>console.log('onChng')}
             value={formText.email}
             id=""
             cols="20"

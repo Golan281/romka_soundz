@@ -25,24 +25,27 @@ export const SinglePostView = () => {
       setErr(err?.response?.data?.message);
     }
   }
-  useEffect( async () => {
-    await handlePosts();
-    
+  useEffect(() => {
+    handlePosts();
+    // eslint-disable-next-line
   },[]);
   // 
   console.log(singlePost?.[0]);
   // console.log("params match title?", title);
   //fetch just the one post matching the title/postID
   // const titleForIframe = (singlePost[0].title === )
+
+
+  //check if theres a valid iframe link or render without it: singlePost.link && 
   return (
     <div className="single-post-view">
       {(singlePost) ? 
       (<div>
         <h1>{singlePost[0].title}</h1>
         <p className="rtl single-post-content">{singlePost[0].content}</p>
-        <img src={singlePost[0].imgUrl}></img>
+        <img src={singlePost[0].imgUrl} alt="to accompany the title"></img>
         <p>{singlePost[0].date}</p>
-        <iframe className="iframe-box-mini" width="90%" height="60" src={singlePost[0].linkUrl} frameBorder="0" ></iframe>
+        <iframe title={singlePost[0].title} className="iframe-box-mini" width="90%" height="60" src={singlePost[0].linkUrl} frameBorder="0" ></iframe>
       </div>)
        : 'Loading...'} 
     </div>

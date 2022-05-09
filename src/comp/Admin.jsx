@@ -1,24 +1,23 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { APIcontrol } from "../config/fbaseCtrl";
 import Swal from "sweetalert2";
 import * as helperProps from "../lib/helpers";
-import { NotFound } from './NotFound';
 
 export const Admin = () => {
-  const [isPgLoading, setIsPgLoading] = useState(true);
+  // const [isPgLoading, setIsPgLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [inputs, setInputs] = useState({title: '', content: '',desc: '',link: '', file:''});
-  const ref = useRef();
+  // const ref = useRef();
   // const resetInputs = () => ref.current.value="";
-  const resetInputs = () => setInputs("");
+  // const resetInputs = () => setInputs("");
   // const [profilePic,setProfilePic] = useState();
-  const userInfo = { uid: "fakeAuthContext" };
+  // const userInfo = { uid: "fakeAuthContext" };
   const handleChange = (ev) => {
     // console.log(ev.target);
     const { name, value, files } = ev.target;
     const userFile = files?.[0];
     console.log(files?.[0]);
-    const picMsg = userFile ? 'Image added' : 'Error, please try again'; //to add to swal
+    // const picMsg = userFile ? 'Image added' : 'Error, please try again'; //to add to swal
     setInputs((inputs) => {
       return {
         ...inputs,
@@ -104,7 +103,8 @@ export const Admin = () => {
           placeholder="Title"
           // value={inputs.title}
           value={inputs.title}
-
+          onChange={()=>console.log('onChng')}
+          
           required
           />
       </label>
@@ -115,6 +115,7 @@ export const Admin = () => {
           name="content"
           placeholder="Post content"
           value={inputs.content}
+          onChange={()=>console.log('onChng')}
           required
           />
       </label>
@@ -125,6 +126,7 @@ export const Admin = () => {
           name="desc"
           placeholder="Post description"
           value={inputs.desc}
+          onChange={()=>console.log('onChng')}
           required
           />
       </label>
@@ -134,7 +136,8 @@ export const Admin = () => {
           type="text"
           name="linkUrl"
           placeholder="Mixcloud embed link"
-          // value={inputs.link}
+          value={inputs.link}
+          onChange={()=>console.log('onChng')}
           // defaultValue={inputs.link}
           required
           />
@@ -146,7 +149,8 @@ export const Admin = () => {
           accept="image/*"
           name="imgFile"
           id="imgFile"
-          // defaultValue={inputs.file}
+          value={inputs.file}
+          onChange={()=>console.log('onChng')}
           required
         />
       </label>
