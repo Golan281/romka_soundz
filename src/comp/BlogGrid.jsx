@@ -1,53 +1,79 @@
 // import Grid from './UIkit/Grid';
 //import blogArr & map here
-import React from "react";
-// import { blogPosts } from "../config/blog";
+import React, { useState, useEffect, useContext } from "react";
 import { BlogPost } from "./BlogPost";
-import { v4 as uuidv4 } from 'uuid';
+import { APIcontrol } from "../config/fbaseCtrl";
+// const axios = require('axios'); ===don't forget npm uninstall
+// import { useParams } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  NavLink,
+  useParams,
+  useNavigate,
+  Outlet,
+} from "react-router-dom";
 //blog images here: (how can I make it even easier?)
-import ant_rock from '../img/ant_rock.jpg';
-import cumbia from '../img/Cumbia.png';
-import kuduro from '../img/Kuduro.jpg';
+
+import { axios } from 'axios';
+import { BlogContext } from "../contexts/BlogContext";
+import {blogPosts} from "../lib/blogPosts";
 
 export const BlogGrid = () => {
-    const blogPosts = [
-        {
-            title: 'Anatalian Rock',
-            snippet: 'ב-1923, הגיעו לקיצן יותר מ-600 שנות קיום של האימפריה העותמנית, ועל חורבותיה החלה להיבנות מדינת טורקיה המודרנית, בהשראת מנהיגה הראשון מוסטפא כמאל.',
-            content: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem',
-            imgSrc: ant_rock,
-            // urlParam: 'or-should-it-be-route?',
-            link: 'https://www.mixcloud.com/roman-ostrovsky/turkish-gold/',
-        },
-        {
-            title: 'Cumbia',
-            snippet: 'האנשים העניים, חופשיים ועבדים, חומים, שחורים , פועלים, שורפי הפחם והדייגים עמדו יחפים. הם, שהעדיפו את החופש הטבעי של המעמד שלהם רקדו באוויר הפתוח לצלילי הרעם של התופים האפריקאיים שנוגנו עם ידיהם על הראש',
-            content: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem',
-            imgSrc: cumbia,
-            //imgSrc will be replaced for more convenice to romka somehow
-            // urlParam: 'or-should-it-be-route?',
-            link: '',
-        },
-        {
-            title: 'Kuduro',
-            snippet: '"קודורו זו אמנות, קודורו זה ריקוד, קודורו זו תרבות...זה השורש של אנגולה. זה הפך לחלק מהדם שלנו, החיים שלנו...אין אדם אחד באנגולה שלא חי את אורח החיים של הקודורו" אומר Zoca Zoca, אחד מיוצרי הקודורו הבולטים.',
-            content: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem',
-            imgSrc: kuduro,
-            //imgSrc will be replaced for more convenice to romka somehow
-            // urlParam: 'or-should-it-be-route?',
-            link: '',
-        },
-    ]
-    return (
-        <div key="blog-grid" className="blog-grid">
-            {blogPosts.map((eachPost)=>
-            <BlogPost
-            key={uuidv4()}
-            props={eachPost}
-            >
-            </BlogPost>
-            )}
-        </div>
+  const [err, setErr] = useState("");
+  // const [posts, setPosts] = useState(blogPosts);
+  const { posts, setPosts } = useContext(BlogContext);
+  const handlePosts = async () => {
+    try {
+      const allPosts = await APIcontrol.getPosts(APIcontrol.queryForAll);
+      // const { fetchedPosts, lastKey } = allPosts;
+      console.log('base posts>',allPosts)
+      setPosts([...blogPosts, ...allPosts]);
+      return allPosts;
+    } catch (err) {
+      setErr(err?.response?.data?.message);
+    }
+  }
+  useEffect(async () => {
+    await handlePosts();
+    // console.log(posts)
+    
+  },[]);
 
-    )
-}
+    console.log(posts)
+
+  
+
+
+  const param = useParams();
+  const nav = useNavigate();
+  //this means a route path of "/:param" for the blog param
+  // const redirectToPost = (id) => {
+  //   console.log('is id grabbed for url? >', id) //looks like it's working but not on click, it's done on the first render for each blog post - should it be on the grid comp?
+  //   //the onclick func that will create/assign the post id as the url:
+  //   nav(`/blog/${id}`);
+  //   //then should open it in a modal/specific page that receives the post as a prop (look what I did in the notes app)
+  // }
+  return (
+    <div key="blog-grid" className="blog-grid">
+      {/* <ReactModal /> */}
+      {/* <Modl /> */}
+      {posts.map((eachPost) => (
+        <NavLink 
+        to={`./${eachPost.postID}`} 
+        key={eachPost.id}>
+          <BlogPost
+            key={eachPost.id}
+            props={eachPost}
+            // onClick={onPostClick} //not working on the grid page
+            >
+          {/* <Modl /> */}
+          </BlogPost>
+        </NavLink>
+        ))}
+        <Outlet />
+        {/* <Outlet /> //breaks code for some reason */} 
+    </div>
+  );
+};

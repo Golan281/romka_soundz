@@ -27,8 +27,10 @@ yarn-error.log*
 .netlify
 
 # other
-/src/config/
+/src/config/blog.js
 /src/comp/Blog/
-/src/Hooks
+/src/Hooks/useModal.js
+/src/comp/Modl.jsx
+/src/comp/ReactModal.jsx
 
 

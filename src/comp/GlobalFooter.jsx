@@ -1,23 +1,38 @@
 // import Line from "./UIkit/Line";
-import { MdLocalPhone , MdEmail , MdFacebook} from 'react-icons/md';
-import { CgInstagram, CgYoutube} from 'react-icons/cg';
+import {
+  MdLocalPhone,
+  MdEmail,
+  MdFacebook,
+} from "react-icons/md";
+import { CgInstagram, CgYoutube } from "react-icons/cg";
 
 export const GlobalFooter = () => {
-    return (
-        <div>
-            <footer className='secondary-footer'>
-                {/* <Line> currently not-aligned - need to use myNotesLine*/}
-                <p>
-                    <MdLocalPhone  size="3rem"/>
-                    <MdEmail size="3rem"/>
-                    <CgInstagram size="3rem"/>
-                    <MdFacebook size="3rem"/>  
-                    <CgYoutube size="3rem"/><br></br>
-                    &#169; All rights reserved to Roman Ostrovsky 2022 
-                </p> 
-                {/* </Line> */}
-                {/* Powered by <a href="./home">React</a> | Developed by <a href="#">Golan Blumenkrants</a> */}
-            </footer>
-        </div>
-    )
-}
+  return (
+    <div>
+      <footer className="footer">
+        {/* <Line> currently not-aligned - need to use myNotesLine*/}
+        <p>
+          <a href="tel:+972508280533">
+            <MdLocalPhone size="3rem" />
+          </a>
+          <a href="mailto:contact@romkasoundz.com">
+            <MdEmail size="3rem" />
+          </a>
+          <a href="https://www.instagram.com/romkasoundz/" target="_blank" >
+          <CgInstagram size="3rem" />
+          </a>
+          <a href="https://www.facebook.com/romkasoundz" target="_blank" >
+            <MdFacebook size="3rem" />
+          </a>
+          <a href="https://www.youtube.com/channel/UC4H_9DZOvRL-uScwvsGQ5NQ" target="_blank" >
+          <CgYoutube size="3rem" />
+          </a>
+          <br></br>
+          &#169; All rights reserved to Roman Ostrovsky 2022
+          <br></br>
+         Developed with &#x1F49B; by <a href="https://golandev.tech/"  target="_blank">Golan Blumenkrants</a> | Powered by <a href="./home">React</a>
+        </p>
+      </footer>
+    </div>
+  );
+};

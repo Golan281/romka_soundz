@@ -31,6 +31,15 @@
   z-index: 0;
 }
 
+.nav-grid, .footer, .admin-form, .input-form {
+  z-index: 1;
+  position: relative;
+}
+
+.about-pg {
+  max-width: 700px;
+}
+
 .blog-grid {
   z-index: 1;
 }
@@ -42,6 +51,7 @@
 
 p.rtl {
   direction: rtl;
+  text-align: start;
 }
 
 div > img {
@@ -72,11 +82,11 @@ a.active .btn {
   border-radius: 8px;
   box-shadow: 2px 4px;
   margin: 6px;
-  min-width: 125px;
-  max-width: 125px;
+  min-width: 164px;
+  max-width: 164px;
   min-height: 50px;
   max-height: 50px;
-  font-size: 140%;
+  font-size: 120%;
   
 }
 
@@ -94,11 +104,20 @@ a.active .btn {
   box-shadow: 1px 2px;
 }
 
+i:hover {
+  opacity: 0.6;
+}
+
 
 .App-link {
   color: #065774;
 }
 
+.admin-form {
+  display: grid;
+  grid-template-columns: repeat(1,1fr);
+  padding-top: 20px;
+}
 .input-form {
   margin-top: 40px;
   margin-bottom: 40px;
@@ -117,11 +136,11 @@ a.active .btn {
 label {
   padding: 20px;
 }
-label input {
+label input, label textarea {
   min-height: 40px;
-  max-height: 40px;
+  max-height: 100px;
+  max-width: 300px;
   text-align: center;
-
 }
 
 .single-post {
@@ -130,15 +149,37 @@ label input {
   border-radius: 8px;
   padding: 2px;
   margin: 20px;
-  min-height: 250px;
-  max-height: 450px;
+  min-height: 500px;
+  max-height: 500px;
   min-width: 250px;
   max-width:450px; 
   /* border: 1px solid #FFEF99; */
   border-radius: 8px;
 }
 
+.single-post-view {
+  background-color:#E1F1E6;
+  box-shadow: 1px 1px;
+  border-radius: 8px;
+  padding: 2px;
+  margin: 20px;
+  min-height: 80%;
+  max-height: 80%;
+  min-width: 80%;
+  /* max-width:80%;  */
+  max-width: 700px;
+  /* border: 1px solid #FFEF99; */
+  border-radius: 8px;
+  position: relative;
+  padding: 20px;
+  z-index: 1;
+}
+
 .rtl.single-post-content {
+  /* letter-spacing: 1px; */
+  word-spacing: 1px;
+  line-height: 30px;
+  /* word-break: keep-all; */
   font-size: 16px;
   padding-bottom: 30px;
   padding-left: 16px;
@@ -159,6 +200,17 @@ label input {
   border-radius: 8px;
   width: 560px;
   height: 315px;
+  z-index: 1;
+  position: relative;
+
+}
+.iframe-box-mini {
+  border: 1px solid #FFEF99;
+  border-radius: 8px;
+  z-index: 1;
+  position: relative;
+  /* width: 560px;
+  height: 315px; */
 
 }
 
@@ -182,6 +234,10 @@ label input {
  .particles {
    display: none;
  }
+
+ .about-pg {
+  max-width: 300px;
+}
 }
 
 @media (min-width: 1000px) {
