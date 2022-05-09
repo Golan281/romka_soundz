@@ -49,6 +49,7 @@ export const Admin = () => {
       });
       //   setProfilePic(postPic);
       // resetInputs();
+      console.log(uploadPost);
       setInputs({title: '', content: '',desc: '',link: '', file:''});
       Swal.fire({
         title: "The post is live :)",

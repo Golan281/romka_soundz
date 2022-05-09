@@ -30,7 +30,7 @@ export const SinglePostView = () => {
     // eslint-disable-next-line
   },[]);
   // 
-  console.log(singlePost?.[0]);
+  console.table(singlePost?.[0],err);
   // console.log("params match title?", title);
   //fetch just the one post matching the title/postID
   // const titleForIframe = (singlePost[0].title === )

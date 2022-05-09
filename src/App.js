@@ -1,12 +1,11 @@
 // import logo from './logo.png';
 import { Logo } from './comp/Logo';
 import './App.css';
-import { Routes, Route, Outlet } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { GlobalNav } from './comp/GlobalNav';
 import { GlobalFooter } from './comp/GlobalFooter';
 import { AboutPg } from './comp/AboutPg';
 import { BlogGrid } from './comp/BlogGrid';
-import { BlogPost } from './comp/BlogPost';
 import { MusicHub } from './comp/MusicHub';
 import { Sub } from './comp/Sub';
 import { Admin } from './comp/Admin';

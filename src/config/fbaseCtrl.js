@@ -1,9 +1,10 @@
 
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, query, where, getDocs, addDoc, limit, startAfter, orderBy } from "firebase/firestore";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, onAuthStateChanged, GoogleAuthProvider, signOut } from "firebase/auth";
+import { getFirestore, collection, query, where, getDocs, addDoc,  } from "firebase/firestore";
+// limit, startAfter, orderBy
+import { getAuth, signInWithPopup, onAuthStateChanged, GoogleAuthProvider, signOut } from "firebase/auth";
 import { getStorage, uploadBytes, getDownloadURL, ref } from "firebase/storage";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 import * as helperProps from "../lib/helpers";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -41,13 +42,13 @@ export const APIcontrol = {
   getPosts: async (q) => {
     const querySnapshot = await getDocs(q);
     let fetchedPosts = [];
-    let lastKey = '';
+    // let lastKey = '';
     querySnapshot.forEach((doc) => {
       fetchedPosts.push({
         id: doc.id,
         ...doc.data(),
       });
-      lastKey = doc.data().date;
+      // lastKey = doc.data().date;
     }
     )
     return fetchedPosts;
@@ -75,12 +76,14 @@ export const APIcontrol = {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
+        console.table(token,user);
         return result.user;
       }).catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         const email = error.email;
         const credential = GoogleAuthProvider.credentialFromError(error);
+        console.table(errorCode,errorMessage,email,credential)
       });
   },
   signOut: async () => {
@@ -97,6 +100,7 @@ export const APIcontrol = {
     const postID = helperProps.setId();
     const fileRef = ref(storage, `blog_images/${postID}/${userFileName}`);
     const currSnapShot = await uploadBytes(fileRef, userFile);
+    console.log(currSnapShot);
     const fileUrl = await getDownloadURL(fileRef);
     console.log('uploaded img>', fileUrl);
     console.log('postID >', postID);

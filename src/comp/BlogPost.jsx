@@ -1,17 +1,11 @@
-import React, {useContext} from "react";
-import { useParams, useNavigate } from "react-router-dom";
-// import { useModal } from "@chakra-ui/react";
-//import icons to close post/modal
-import { BlogContext } from './../contexts/BlogContext';
-import { useBlog } from "../hooks/useBlog";
+import React from "react";
+// import { BlogContext } from './../contexts/BlogContext';
 
-//each post will include: title, content, img, shareable unique link (with id?)
 
 export const BlogPost = (props) => {
   // console.log(props)
-  const { postID, title, desc, content, imgUrl, linkUrl, date } = props.props;
-   // const nav = useNavigate();
-   const { posts, setPosts } = useContext(BlogContext);
+  const { title, desc, imgUrl,} = props.props;
+  //  const { posts, setPosts } = useContext(BlogContext);
   //  console.log('all posts on blogPost comp>',posts)
   // const [{ postID, title, desc, content, imgUrl, linkUrl, date }] = props.props;
   // const { modalContent, setGlobalModalContent } = useModal();
@@ -52,7 +46,7 @@ export const BlogPost = (props) => {
         <img
           className="blog-img"
           src={imgUrl}
-          alt={`${title}: blog post image`}
+          alt={`${title}: blog post`}
         ></img>
       </div>
     </div>
