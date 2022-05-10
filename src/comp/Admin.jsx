@@ -6,6 +6,7 @@ import * as helperProps from "../lib/helpers";
 export const Admin = () => {
   // const [isPgLoading, setIsPgLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isAuth, setIsAuth] = useState(false);
   const [inputs, setInputs] = useState({title: '', content: '',desc: '',link: '', file:''});
   // const ref = useRef();
   // const resetInputs = () => ref.current.value="";
@@ -91,11 +92,13 @@ export const Admin = () => {
       });
     }, []);
   return (
+    // (isAuth) ? (<div>
+
     (isLoggedIn) ? (    <div className="input-form">
     <form
       className="admin-form"
       onChange={handleChange}
-    >
+      >
       <label htmlFor="title">
         <input
           className="input"
@@ -153,19 +156,19 @@ export const Admin = () => {
           value={inputs.file}
           onChange={()=>console.log('onChng')}
           required
-        />
+          />
       </label>
       </form>
     <button
       className="btn profile-pg"
       onClick={handleSave}
-    >
+      >
       <b>Upload</b>
     </button>
     <button
       className="btn profile-pg"
       onClick={handleSignout}
-    >
+      >
       <b>Sign out</b>
     </button>
   </div>)
@@ -174,6 +177,7 @@ export const Admin = () => {
       To upload posts :)
 
       </div>)
+        // </div>) : (<p></p>)
 
   );
 };

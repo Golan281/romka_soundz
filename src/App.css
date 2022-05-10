@@ -245,4 +245,9 @@ label input, label textarea {
     display: grid;
     grid-template-columns: repeat(3,1fr);
   }
+  .blog-grid-one-post {
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+
+  }
 }

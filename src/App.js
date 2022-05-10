@@ -28,7 +28,8 @@ function App() {
         <BlogContext.Provider value={blogContext}>
 
           <Routes>
-            <Route path={"/" || "/home"} element={<React.Fragment />} />
+          {/* || "/home" */}
+            <Route path={"/*"} element={<React.Fragment />} />
             <Route path="/about" element={<AboutPg />} />
             <Route path="/music" element={<MusicHub />} />
             <Route path="/blog/:postID" element={<SinglePostView />} />

@@ -9,8 +9,11 @@ export const SinglePostView = () => {
   const [singlePost, setSinglePost] = useState();
   const [err, setErr] = useState();
 
+  const dateConverter = (date) => {
+    const convertedDate = new Date(Date.parse(date));
+    return `${convertedDate.getFullYear()}-${convertedDate.getMonth()+1}-${convertedDate.getDate()}`;
+  }
   const handlePosts = async () => {
-    console.log('should be postID>',postID)
     const { getPosts, queryForSinglePost } = APIcontrol;
     try {
       // const fetchPost = async () => {
@@ -18,7 +21,6 @@ export const SinglePostView = () => {
       //   setSinglePost(post);
       //  };
       const post = await getPosts((queryForSinglePost(postID)));
-      console.log('fteched base post>',post)
       setSinglePost(post);
       return post;
     } catch (err) {
@@ -44,7 +46,7 @@ export const SinglePostView = () => {
         <h1>{singlePost[0].title}</h1>
         <p className="rtl single-post-content">{singlePost[0].content}</p>
         <img src={singlePost[0].imgUrl} alt="to accompany the title"></img>
-        <p>{singlePost[0].date}</p>
+        <p>{dateConverter(singlePost[0].date)}</p>
         <iframe title={singlePost[0].title} className="iframe-box-mini" width="90%" height="60" src={singlePost[0].linkUrl} frameBorder="0" ></iframe>
       </div>)
        : 'Loading...'} 

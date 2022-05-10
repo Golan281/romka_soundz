@@ -7,7 +7,6 @@ import {
   Outlet,
 } from "react-router-dom";
 import { BlogContext } from "../contexts/BlogContext";
-import {blogPosts} from "../lib/blogPosts";
 
 export const BlogGrid = () => {
   const [err, setErr] = useState("");
@@ -16,7 +15,7 @@ export const BlogGrid = () => {
     try {
       const allPosts = await APIcontrol.getPosts(APIcontrol.queryForAll);
       // console.log('base posts>',allPosts)
-      setPosts([...blogPosts, ...allPosts]);
+      setPosts([...allPosts]);
       return allPosts;
     } catch (err) {
       setErr(err?.response?.data?.message);
@@ -31,7 +30,7 @@ export const BlogGrid = () => {
 
 
   return (
-    <div key="blog-grid" className="blog-grid">
+    <div key="blog-grid" className={(posts.length === 1) ? "blog-grid  one-post" : "blog-grid"}>
       {posts.map((eachPost) => (
         <NavLink 
         to={`./${eachPost.postID}`} 
