@@ -8,9 +8,11 @@ export const Sub = () => {
     firstName: "",
     lastName: "",
     email: "",
+    didOptIn: false,
   });
   const handleChange = (ev) => {
     const { name, value } = ev.target;
+    console.table(ev.target.name, ev.target.value)
     setFormText((formText) => {
       return {
         ...formText,
@@ -30,6 +32,7 @@ export const Sub = () => {
         firstName: "",
         lastName: "",
         email: "",
+        didOptIn: false,
       });
       console.log(subscriber)
       Swal.fire({
@@ -42,6 +45,7 @@ export const Sub = () => {
         firstName: "",
         lastName: "",
         email: "",
+        didOptIn: false,
       });
       Swal.fire({
         title: "Couldn't upload post",
@@ -89,11 +93,23 @@ export const Sub = () => {
             required
           ></input>
           <label>
-          <input type="checkbox"
+            <p></p>
+          <input 
+          className="checkbox"
+          type="checkbox"
           name="checkbox"
+          onChange={()=>{
+            formText.didOptIn = !formText.didOptIn;
+             console.log(formText.didOptIn)}}
+            value={formText.didOptIn}
           htmlFor="checkbox"
           required></input> 
-            I agree to
+          <br></br>
+          <p className="concent-p">
+          <b>Yes, I want to receive occasional email updates from Romka!</b>
+          <br></br>
+          Your privacy is highly respected. The updates will only include relevant news about new music and shows.
+          </p>
           </label>
         </label>
       </form>

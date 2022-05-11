@@ -49,6 +49,11 @@
   z-index: 1;
 }
 
+.concent-p {
+  margin: 20px;
+  text-align: center;
+}
+
 p.rtl {
   direction: rtl;
   text-align: start;
@@ -133,6 +138,33 @@ i:hover {
   margin: 2px;
 }
 
+.checkbox {
+  -webkit-appearance: none;
+  background-color:#FFF4B8;
+  box-shadow: 1px 2px;
+  padding: 20px;
+  margin-right:10px;
+	border-radius: 8px;
+  position: relative;
+}
+
+.checkbox:checked {
+  /* -webkit-appearance: none; */
+  background-color: #FF9B6A;
+  color:#FFEF99;
+  /* border: 1px solid #cacece; */
+  /* padding: 9px;
+	border-radius: 30px; */
+}
+
+.checkbox:checked:after {
+  content: '\2714';
+	font-size: 28px;
+	position: absolute;
+	top: 0px;
+	left: 8px;
+	color:#FFEF99;
+}
 label {
   padding: 20px;
 }

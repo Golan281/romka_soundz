@@ -28,9 +28,11 @@ export const SinglePostView = () => {
     }
   }
   useEffect(() => {
-    handlePosts();
+    let isMounted = true;  
+    if (isMounted) handlePosts();
+    return () => { isMounted = false };
     // eslint-disable-next-line
-  },[]);
+  }, []);
   // 
   console.table(singlePost?.[0],err);
   // console.log("params match title?", title);

@@ -8,13 +8,20 @@ export const Admin = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   // const [isAuth, setIsAuth] = useState(false);
   const [inputs, setInputs] = useState({title: '', content: '',desc: '',link: '', file:''});
+  const [linkInput, setLinkInput] = useState('');
+  const [imgInput, setImgInput] = useState('');
   // const ref = useRef();
   // const resetInputs = () => ref.current.value="";
   // const resetInputs = () => setInputs("");
   // const [profilePic,setProfilePic] = useState();
   // const userInfo = { uid: "fakeAuthContext" };
+  const handleLinkInput = (ev) => {
+    setLinkInput(ev.target.value);
+  }
+  const handleImgInput = (ev) => {
+    setImgInput(ev.target.value);
+  }
   const handleChange = (ev) => {
-    // console.log(ev.target);
     const { name, value, files } = ev.target;
     const userFile = files?.[0];
     console.log(files?.[0]);
@@ -33,8 +40,8 @@ export const Admin = () => {
       const data = new FormData();
       data.append("pImg", inputs.userFile);
       //upload the image seperately and get the url, then deledte it from the input obj
-
-
+      
+      
       const { title, content, desc, linkUrl, userFile } = inputs;
       const uploadPostPic = await APIcontrol.uploadPic(userFile);
       console.log(uploadPostPic); //think of a diff way to save this variable
@@ -52,6 +59,8 @@ export const Admin = () => {
       // resetInputs();
       console.log(uploadPost);
       setInputs({title: '', content: '',desc: '',link: '', file:''});
+      setLinkInput('');
+      setImgInput('');
       Swal.fire({
         title: "The post is live :)",
         ...helperProps.swalProps,
@@ -60,6 +69,8 @@ export const Admin = () => {
       // setInputs('title'); //empty inputs
       // resetInputs();
       setInputs({title: '', content: '',desc: '',link: '', file:''});
+      setLinkInput('');
+      setImgInput('');
       console.error(err);
       Swal.fire({
         title: "Couldn't upload post",
@@ -107,7 +118,7 @@ export const Admin = () => {
           placeholder="Title"
           // value={inputs.title}
           value={inputs.title}
-          onChange={()=>console.log('onChng')}
+          onChange={handleChange}
           
           required
           />
@@ -119,7 +130,7 @@ export const Admin = () => {
           name="content"
           placeholder="Post content"
           value={inputs.content}
-          onChange={()=>console.log('onChng')}
+          onChange={handleChange}
           required
           />
       </label>
@@ -130,7 +141,7 @@ export const Admin = () => {
           name="desc"
           placeholder="Post description"
           value={inputs.desc}
-          onChange={()=>console.log('onChng')}
+          onChange={handleChange}
           required
           />
       </label>
@@ -140,8 +151,8 @@ export const Admin = () => {
           type="text"
           name="linkUrl"
           placeholder="Mixcloud embed link"
-          value={inputs.link}
-          onChange={()=>console.log('onChng')}
+          value={imgInput}
+          onChange={handleImgInput}
           // defaultValue={inputs.link}
           required
           />
@@ -153,8 +164,8 @@ export const Admin = () => {
           accept="image/*"
           name="imgFile"
           id="imgFile"
-          value={inputs.file}
-          onChange={()=>console.log('onChng')}
+          value={linkInput}
+          onChange={handleLinkInput}
           required
           />
       </label>

@@ -30,7 +30,7 @@ export const GlobalFooter = () => {
           <br></br>
           &#169; All rights reserved to Roman Ostrovsky 2022
           <br></br>
-         Developed with &#x1F49B; by <a href="https://golandev.tech/"  target="_blank" rel="noreferrer">Golan Blumenkrants</a> | Powered by <a href="./home">React</a>
+         Developed with &#x1F49B; by <a href="https://golandev.tech/"  target="_blank" rel="noreferrer">Golan Blumenkrants</a> | Powered by <a href="https://reactjs.org/"  target="_blank" rel="noreferrer">React</a>
         </p>
       </footer>
     </div>
