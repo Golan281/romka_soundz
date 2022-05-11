@@ -10,6 +10,10 @@ export const Sub = () => {
     email: "",
     didOptIn: false,
   });
+
+  // const onSubmit = (ev) => {
+  //   ev.preventDefault();
+  // }
   const handleChange = (ev) => {
     const { name, value } = ev.target;
     console.table(ev.target.name, ev.target.value)
@@ -21,6 +25,11 @@ export const Sub = () => {
     });
   };
   const handleSave = async () => {
+    console.table(formText);
+    const {firstName,lastName,email,didOptIn} = formText;
+    if (!firstName && !lastName && !email && !didOptIn) throw new Error('must fill all fields');
+    
+    // onSubmit()
     // console.log(formText);
     // setFormText(formText);
     try {
@@ -55,7 +64,9 @@ export const Sub = () => {
   };
   return (
     <div className="input-form">
-      <form onChange={handleChange}>
+      <form onChange={handleChange}
+      // onSubmit={onSubmit}
+      >
         <label type="text" htmlFor="firstName">
           <input
             className="input"
@@ -113,7 +124,7 @@ export const Sub = () => {
           </label>
         </label>
       </form>
-      <button className="btn form-btn" onClick={handleSave}>
+      <button type="submit" className="btn form-btn" onClick={handleSave}>
         <b>Submit</b>
       </button>
       <div></div>
