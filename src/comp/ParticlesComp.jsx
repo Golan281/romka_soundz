@@ -3,11 +3,11 @@ import React from "react";
 import Particles from "react-tsparticles";
 export const ParticlesComp = () => {
   const particlesInit = (main) => {
-    console.log(main);
+    return main;
   };
 
   const particlesLoaded = (container) => {
-    console.log(container);
+    return container;
   };
 
   return (

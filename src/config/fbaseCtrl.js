@@ -55,10 +55,17 @@ export const APIcontrol = {
   },
   uploadPost: async (userInputObj) => {
     try {
-      const docRef = await addDoc(collection(DB, "romkaDB"), userInputObj);
-      console.log("Document written with ID: ", docRef.id, 'and check firestore for the content sent');
+      // const docRef = await addDoc(collection(DB, "romkaDB"), userInputObj);
+      await addDoc(collection(DB, "romkaDB"), userInputObj);
+      // console.log("Document written with ID: ", docRef.id, 'and check firestore for the content sent');
+      // if (docRef === undefined) e = `Post must include image and music link url`;
+      return `The post is live :)`
     } catch (e) {
-      console.error("Error adding document: ", e);
+      // console.error(docRef.error);
+      // console.error("Error adding document: ", e);
+      // e = `Post must include image and music link url`;
+      // return `Error uploading post: ${e}`;
+      return `Error uploading post: You are not authorized, please contact the webmaster (${e})`;
     }
   },
   uploadSubscriber: async (userInputObj) => {
@@ -67,7 +74,7 @@ export const APIcontrol = {
       const docRef = await addDoc(collection(DB, "subscribeDB"), userInputObj);
       console.log("Document written with ID: ", docRef.id, 'and check firestore for the content sent');
     } catch (e) {
-      console.error("Error adding document: ", e);
+      console.error("Error adding post: ", e);
     }
   },
   googleLogin: async () => {
@@ -76,8 +83,8 @@ export const APIcontrol = {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
-        console.table(token,user);
-        return result.user;
+        // console.table(token,user);
+        return {user, token};
       }).catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -95,15 +102,21 @@ export const APIcontrol = {
     });
   },
   uploadPic: async (userFile) => {
-    console.log(userFile);
-    const userFileName = userFile.name ? `${userFile.name}` : 'img.jpg';
-    const postID = helperProps.setId();
-    const fileRef = ref(storage, `blog_images/${postID}/${userFileName}`);
-    const currSnapShot = await uploadBytes(fileRef, userFile);
-    console.log(currSnapShot);
-    const fileUrl = await getDownloadURL(fileRef);
-    console.log('uploaded img>', fileUrl);
-    console.log('postID >', postID);
-    return { fileUrl, postID };
+    try {
+      // console.log(userFile);
+      const userFileName = userFile.name ? `${userFile.name}` : 'img.jpg';
+      const postID = helperProps.setId();
+      const fileRef = ref(storage, `blog_images/${postID}/${userFileName}`);
+      const currSnapShot = await uploadBytes(fileRef, userFile);
+      // console.log(currSnapShot);
+      const fileUrl = await getDownloadURL(fileRef);
+      // console.log('uploaded img>', fileUrl);
+      // console.log('postID >', postID);
+      return { fileUrl, postID, currSnapShot };
+    } catch (err) {
+      // err = `Post must include image and music link url`;
+      return `Error uploading post: ${err}`;
+      // return err;
+    }
   },
 }

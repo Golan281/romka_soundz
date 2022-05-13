@@ -1,5 +1,51 @@
+@font-face {
+  /* ENG header font */
+  font-family: 'Colcothar';
+  src: url('./fonts/Colcothar.eot');
+  src: url('./fonts/Colcothar.eot?#iefix') format('embedded-opentype'),
+      url('./fonts/Colcothar.woff2') format('woff2'),
+      url('./fonts/Colcothar.woff') format('woff'),
+      url('./fonts/Colcothar.ttf') format('truetype'),
+      url('./fonts/Colcothar.svg#Colcothar') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  /* HEB 1st font */
+  font-family: 'Trashim CLM';
+  src: url('./fonts/TrashimCLM-Bold.eot');
+  src: url('./fonts/TrashimCLM-Bold.eot?#iefix') format('embedded-opentype'),
+      url('./fonts/TrashimCLM-Bold.woff2') format('woff2'),
+      url('./fonts/TrashimCLM-Bold.woff') format('woff'),
+      url('./fonts/TrashimCLM-Bold.ttf') format('truetype'),
+      url('./fonts/TrashimCLM-Bold.svg#TrashimCLM-Bold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+  font-display: block;
+}
+
+
+
+@font-face {
+  /* HEB 2nd font */
+  font-family: 'Rubik';
+  src: url('./fonts/Rubik-Regular.eot');
+  src: url('./fonts/Rubik-Regular.eot?#iefix') format('embedded-opentype'),
+      url('./fonts/Rubik-Regular.woff2') format('woff2'),
+      url('./fonts/Rubik-Regular.woff') format('woff'),
+      url('./fonts/Rubik-Regular.ttf') format('truetype'),
+      url('./fonts/Rubik-Regular.svg#Rubik-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+
+}
+
 .App {
   text-align: center;
+  font-family: 'Colcothar', 'Roboto', 'Helvetica', 'Georgia';
 }
 
 .App-logo {
@@ -31,7 +77,8 @@
   z-index: 0;
 }
 
-.nav-grid, .footer, .admin-form, .input-form {
+.nav-grid, .footer, .admin-form, .input-form, .img {
+  font-family: 'Rubik';
   z-index: 1;
   position: relative;
 }
@@ -49,20 +96,36 @@
   z-index: 1;
 }
 
+.blog-post:hover, a:hover {
+  /* opacity: 0.8; */
+  filter: contrast(1.5);
+  cursor: pointer;
+}
+
 .concent-p {
   margin: 20px;
   text-align: center;
 }
 
-p.rtl {
+.rtl {
+  font-family:'Rubik', 'Trashim CLM','Roboto', 'Helvetica'; 
   direction: rtl;
   text-align: start;
+  z-index: 1;
+  position: relative;
 }
 
-div > img {
-  border-radius: 10px;
-  width: 40%;
-  height: 40%;
+.img {
+  margin: 40px;
+  border: 1px solid #FFEF99;
+  border-radius: 8px;
+  width: 60%;
+  height: 60%;
+}
+
+.h1-eng {
+  margin-top: 1px;
+  /* font family: ''; */
 }
 a, a:visited {
   text-decoration: none;
@@ -80,6 +143,7 @@ a.active .btn {
 } */
 
 .btn {
+  font-family: 'Colcothar', 'Roboto', 'Helvetica', 'Georgia';
   transition-duration: 0.2s;
   background-color: #FF9B6A; 
   color: #FFEF99;
@@ -87,11 +151,11 @@ a.active .btn {
   border-radius: 8px;
   box-shadow: 2px 4px;
   margin: 6px;
-  min-width: 164px;
-  max-width: 164px;
+  min-width: 194px;
+  max-width: 194px;
   min-height: 50px;
   max-height: 50px;
-  font-size: 120%;
+  font-size: 110%;
   
 }
 
@@ -103,15 +167,16 @@ a.active .btn {
 }
 
 .btn:hover {
+  opacity: 1;
   color: #FF9B6A; 
   background-color: #FFEF99;
   cursor: pointer;
   box-shadow: 1px 2px;
 }
 
-i:hover {
+/* i:hover {
   opacity: 0.6;
-}
+} */
 
 
 .App-link {
@@ -129,6 +194,7 @@ i:hover {
 }
 
 .input, .input:focus {
+  font-family: 'Rubik', 'Roboto', 'Helvetica', 'Georgia';
   border: none;
   color:#065774;
   background-color:#FFF4B8;
@@ -143,6 +209,8 @@ i:hover {
   background-color:#FFF4B8;
   box-shadow: 1px 2px;
   padding: 20px;
+  min-width: 40px;  
+  max-width: 40px;
   margin-right:10px;
 	border-radius: 8px;
   position: relative;
@@ -170,9 +238,12 @@ label {
 }
 label input, label textarea {
   min-height: 40px;
-  max-height: 100px;
+  max-height: 200px;
+  min-width: 300px;
   max-width: 300px;
   text-align: center;
+  /* vertical-align: middle; */
+  /* line-height: 40px; */
 }
 
 .single-post {
@@ -181,15 +252,19 @@ label input, label textarea {
   border-radius: 8px;
   padding: 2px;
   margin: 20px;
-  min-height: 500px;
-  max-height: 500px;
-  min-width: 250px;
-  max-width:450px; 
+  min-height: 650px;
+  max-height: 650px;
+  min-width: 300px;
+  max-width: 350px; 
   /* border: 1px solid #FFEF99; */
   border-radius: 8px;
 }
 
 .single-post-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color:#E1F1E6;
   box-shadow: 1px 1px;
   border-radius: 8px;
@@ -198,13 +273,27 @@ label input, label textarea {
   min-height: 80%;
   max-height: 80%;
   min-width: 80%;
-  /* max-width:80%;  */
-  max-width: 700px;
+  max-width:80%; 
+  /* max-width: 700px; */
   /* border: 1px solid #FFEF99; */
   border-radius: 8px;
   position: relative;
   padding: 20px;
   z-index: 1;
+}
+/* 
+.single-post-view-flex {
+  align-items: center;
+  position: inherit;
+} */
+
+.blog-txt-formatted {
+  word-wrap: break-word;      /* IE 5.5-7 */
+  white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
+  white-space: pre-wrap;      /* current browsers */
+  width: 97%;
+  /* margin-bottom: 16px */
+  /* margin: 40px; */
 }
 
 .rtl.single-post-content {
@@ -213,7 +302,7 @@ label input, label textarea {
   line-height: 30px;
   /* word-break: keep-all; */
   font-size: 16px;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
   padding-left: 16px;
   padding-right: 16px;
 }
@@ -223,6 +312,7 @@ label input, label textarea {
   min-width: 100px;
   max-width:160px; 
   border: 1px solid #FFEF99;
+  border-radius: 8px;
   margin-bottom: 20px;
   
 }
@@ -254,7 +344,20 @@ label input, label textarea {
     transform: rotateY(60deg);
   }
 }
+
+@media (max-width: 400px) {
+
+  .footer {
+    max-width: 96%;
+  }
+  
+}
 @media (max-width: 800px) {
+  .btn {
+    /* font-size: 90%; */
+    min-width: 170px;
+    max-width: 170px;
+  }
   .nav-grid {
     display: grid;
     grid-template-columns: repeat(2,2fr);
@@ -270,6 +373,10 @@ label input, label textarea {
  .about-pg {
   max-width: 300px;
 }
+.single-post {
+  /* min-width: 600px; */
+  max-width: 600px;
+}
 }
 
 @media (min-width: 1000px) {
@@ -279,7 +386,8 @@ label input, label textarea {
   }
   .blog-grid-one-post {
     display: grid;
-    grid-template-columns: repeat(1,1fr);
+    grid-auto-flow: column;
+    /* grid-template-columns: repeat(1,1fr); */
 
   }
 }

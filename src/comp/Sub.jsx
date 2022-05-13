@@ -2,6 +2,8 @@ import { React, useState } from "react";
 import { APIcontrol } from "../config/fbaseCtrl";
 import Swal from "sweetalert2";
 import * as helperProps from "../lib/helpers"
+import * as yup from 'yup';
+import vibe_websize from '../img/vibe_websize.jpg';
 
 export const Sub = () => {
   const [formText, setFormText] = useState({
@@ -16,7 +18,7 @@ export const Sub = () => {
   // }
   const handleChange = (ev) => {
     const { name, value } = ev.target;
-    console.table(ev.target.name, ev.target.value)
+    // console.table(ev.target.name, ev.target.value)
     setFormText((formText) => {
       return {
         ...formText,
@@ -25,45 +27,71 @@ export const Sub = () => {
     });
   };
   const handleSave = async () => {
-    console.table(formText);
-    const {firstName,lastName,email,didOptIn} = formText;
-    if (!firstName && !lastName && !email && !didOptIn) throw new Error('must fill all fields');
+    // console.table(formText);
+    let schema = yup.object().shape({
+      firstName: yup.string().required(),
+      lastName: yup.string().required(),
+      email: yup.string().email().required(),
+      didOptIn: yup.bool().required(),
+      });
+    // const {firstName,lastName,email,didOptIn} = formText;
+    // if (!firstName && !lastName && !email && !didOptIn) throw new Error('must fill all fields');
     
     // onSubmit()
     // console.log(formText);
     // setFormText(formText);
     try {
-      const subscriber = await APIcontrol.uploadSubscriber({...formText
-      }); //add consent checkbox?
-      //   setProfilePic(postPic);
-      // setInputs({}); //empty inputs
+      const { firstName, lastName, email, didOptIn } = formText;
+      const validateThenUploadSubscriber = async () => {
+      schema.isValid({firstName: firstName, lastName: lastName, email: email, didOptIn: didOptIn})
+      .then(async function (valid) {
+        // console.log('isSchemaOK>',valid)
+        if (valid === false) {
+          Swal.fire({
+            // title: "Couldn't upload post. Please fill out all required info and try again :)",
+            title: `Please fill out all fields and select the checkbox to subscribe`,
+            ...helperProps.swalProps,
+          });
+          return new Error(`Please fill out all fields and select the checkbox to subscribe`);
+          //the curr error is not preventing the upload when mixcloud isnt a url -(b/c fBase continued the upload)
+        }
+        await APIcontrol.uploadSubscriber({firstName: firstName, lastName: lastName, email: email, didOptIn: didOptIn, date: helperProps.todayDate()}); //add consent checkbox?
+        //   setProfilePic(postPic);
+        // setInputs({}); //empty inputs
+        // console.log(subscriber)
+        Swal.fire({
+            title: `Thanks for subscribing, ${firstName} :)`,
+            ...helperProps.swalProps,
+          });
+          return valid; // => true
+        });
+      }
+      validateThenUploadSubscriber();
       setFormText({
         firstName: "",
         lastName: "",
         email: "",
         didOptIn: false,
       });
-      console.log(subscriber)
-      Swal.fire({
-        title: `Thanks for subscribing, ${formText.firstName} :)`,
-        ...helperProps.swalProps,
-      });
-    } catch (err) {
-      console.error(err);
-      setFormText({
-        firstName: "",
-        lastName: "",
-        email: "",
-        didOptIn: false,
-      });
+     } catch (err) {
+        // console.error(err);
+        setFormText({
+          firstName: "",
+          lastName: "",
+          email: "",
+          didOptIn: false,
+        });
+        return err;
+
+      } 
       Swal.fire({
         title: "Couldn't upload post",
         ...helperProps.swalProps,
       });
     }
-  };
   return (
     <div className="input-form">
+      
       <form onChange={handleChange}
       // onSubmit={onSubmit}
       >
@@ -75,7 +103,7 @@ export const Sub = () => {
             type="text"
             htmlFor="firstName"
             placeholder="First name"
-            onChange={()=>console.log('onChng')}
+            onChange={handleChange}
             required
             ></input>
         </label>
@@ -87,7 +115,7 @@ export const Sub = () => {
             type="text"
             htmlFor="lastName"
             placeholder="Last Name"
-            onChange={()=>console.log('onChng')}
+            onChange={handleChange}
             required
             ></input>
         </label>
@@ -95,7 +123,7 @@ export const Sub = () => {
           <input
             className="input"
             name="email"
-            onChange={()=>console.log('onChng')}
+            onChange={handleChange}
             value={formText.email}
             id=""
             cols="20"
@@ -110,8 +138,7 @@ export const Sub = () => {
           type="checkbox"
           name="checkbox"
           onChange={()=>{
-            formText.didOptIn = !formText.didOptIn;
-             console.log(formText.didOptIn)}}
+            formText.didOptIn = !formText.didOptIn;}}
             value={formText.didOptIn}
           htmlFor="checkbox"
           required></input> 
@@ -127,7 +154,9 @@ export const Sub = () => {
       <button type="submit" className="btn form-btn" onClick={handleSave}>
         <b>Submit</b>
       </button>
-      <div></div>
+      <div>
+      <img src={vibe_websize} alt="romka in action" className="img" />
+      </div>
     </div>
   );
 };

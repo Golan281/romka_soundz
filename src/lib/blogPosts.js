@@ -4,7 +4,7 @@
 import logo from '.././logo.png';
 
 export const blogPosts = [
-  { title: "", desc: 'Loading', content: '', postID: undefined, imgUrl: logo, date: undefined, linkUrl: '', },
+  { title: "", desc: 'Loading', content: '', postID: 1, imgUrl: logo, date: undefined, linkUrl: '', },
   //   {
   //   title: "Anatalian Rock",
   //   desc: //change to desc which will just cut the first 30 chars of content

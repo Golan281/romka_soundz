@@ -1,10 +1,13 @@
 import React from "react";
+import {
+  NavLink,
+} from "react-router-dom";
 // import { BlogContext } from './../contexts/BlogContext';
 
 
 export const BlogPost = (props) => {
   // console.log(props)
-  const { title, desc, imgUrl,} = props.props;
+  const { title, desc, imgUrl, postID} = props.props;
   //  const { posts, setPosts } = useContext(BlogContext);
   //  console.log('all posts on blogPost comp>',posts)
   // const [{ postID, title, desc, content, imgUrl, linkUrl, date }] = props.props;
@@ -34,9 +37,17 @@ export const BlogPost = (props) => {
   // };
   // const { blogId } = useParams();
   // console.log("params match id?", blogId);
+  // console.log(postID)
   return (
     <div className="single-post"
-    onClick={onPostClick}>
+    onClick={onPostClick}
+    // key={postID}
+    >
+    <NavLink 
+        to={`./${postID}`} 
+        // key={postID}
+        >
+
       <h1>{title}</h1>
       {/* <div onClick={redirectToPost(id)}> */}
       <div>
@@ -47,8 +58,9 @@ export const BlogPost = (props) => {
           className="blog-img"
           src={imgUrl}
           alt={`${title}: blog post`}
-        ></img>
+          ></img>
       </div>
+      </NavLink>
     </div>
   );
 };
