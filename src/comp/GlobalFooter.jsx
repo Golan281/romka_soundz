@@ -1,4 +1,4 @@
-// import Line from "./UIkit/Line";
+
 import {
   MdLocalPhone,
   MdEmail,
@@ -10,7 +10,6 @@ export const GlobalFooter = () => {
   return (
     <div>
       <footer className="footer">
-        {/* <Line> currently not-aligned - need to use myNotesLine*/}
         <p>
           <a href="tel:+972508280533">
             <MdLocalPhone size="3rem" />

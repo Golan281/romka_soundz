@@ -1,4 +1,3 @@
-//make logo clickable to get back to home
 import logo from '.././logo.png';
 import { NavLink } from 'react-router-dom';
 

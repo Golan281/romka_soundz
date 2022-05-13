@@ -1,16 +1,11 @@
 
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, query, where, getDocs, addDoc,  } from "firebase/firestore";
-// limit, startAfter, orderBy
+
 import { getAuth, signInWithPopup, onAuthStateChanged, GoogleAuthProvider, signOut } from "firebase/auth";
 import { getStorage, uploadBytes, getDownloadURL, ref } from "firebase/storage";
-// import Swal from "sweetalert2";
 import * as helperProps from "../lib/helpers";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyA3-3nse4C_1Q3-cmwBBY9SdbVzv2DHgb8",
   authDomain: "romka-soundz.firebaseapp.com",
@@ -21,11 +16,8 @@ const firebaseConfig = {
   measurementId: "G-WH7Z62VK1P"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const DB = getFirestore(app);
-// const DB = collection(db, "romkaDB");
-// const FORM_DB = collection(db, "forms");
 const googleProvider = new GoogleAuthProvider();
 const storage = getStorage();
 const auth = getAuth();
@@ -35,42 +27,28 @@ export const APIcontrol = {
   queryForSinglePost: (postID) => {
     return query((collection(DB, "romkaDB")), where("postID", "==", `${postID}`))
   },
-  // qForSearch: (userQ, isChecked) => {
-  //   const searchBy = (isChecked) ? "userName" : "content";
-  //   return query((collection(BORK_DB, "borkerDB")), where(`${searchBy}`, "==", `${userQ}`))
-  // },
   getPosts: async (q) => {
     const querySnapshot = await getDocs(q);
     let fetchedPosts = [];
-    // let lastKey = '';
     querySnapshot.forEach((doc) => {
       fetchedPosts.push({
         id: doc.id,
         ...doc.data(),
       });
-      // lastKey = doc.data().date;
     }
     )
     return fetchedPosts;
   },
   uploadPost: async (userInputObj) => {
     try {
-      // const docRef = await addDoc(collection(DB, "romkaDB"), userInputObj);
       await addDoc(collection(DB, "romkaDB"), userInputObj);
-      // console.log("Document written with ID: ", docRef.id, 'and check firestore for the content sent');
-      // if (docRef === undefined) e = `Post must include image and music link url`;
       return `The post is live :)`
     } catch (e) {
-      // console.error(docRef.error);
-      // console.error("Error adding document: ", e);
-      // e = `Post must include image and music link url`;
-      // return `Error uploading post: ${e}`;
       return `Error uploading post: You are not authorized, please contact the webmaster (${e})`;
     }
   },
   uploadSubscriber: async (userInputObj) => {
     try {
-      // const docRef = await addDoc(collection(DB, "subscribeDB"), userInputObj);
       const docRef = await addDoc(collection(DB, "subscribeDB"), userInputObj);
       console.log("Document written with ID: ", docRef.id, 'and check firestore for the content sent');
     } catch (e) {
@@ -83,7 +61,6 @@ export const APIcontrol = {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
-        // console.table(token,user);
         return {user, token};
       }).catch((error) => {
         const errorCode = error.code;
@@ -103,20 +80,14 @@ export const APIcontrol = {
   },
   uploadPic: async (userFile) => {
     try {
-      // console.log(userFile);
       const userFileName = userFile.name ? `${userFile.name}` : 'img.jpg';
       const postID = helperProps.setId();
       const fileRef = ref(storage, `blog_images/${postID}/${userFileName}`);
       const currSnapShot = await uploadBytes(fileRef, userFile);
-      // console.log(currSnapShot);
       const fileUrl = await getDownloadURL(fileRef);
-      // console.log('uploaded img>', fileUrl);
-      // console.log('postID >', postID);
       return { fileUrl, postID, currSnapShot };
     } catch (err) {
-      // err = `Post must include image and music link url`;
       return `Error uploading post: ${err}`;
-      // return err;
     }
   },
 }

@@ -6,7 +6,6 @@ export const SinglePostView = () => {
   const nav = useNavigate();
   const { postID } = useParams();
   const [singlePost, setSinglePost] = useState();
-  // const [err, setErr] = useState();
 
   const dateConverter = (date) => {
     const convertedDate = new Date(Date.parse(date));
@@ -15,10 +14,6 @@ export const SinglePostView = () => {
   const handlePosts = async () => {
     const { getPosts, queryForSinglePost } = APIcontrol;
     try {
-      // const fetchPost = async () => {
-      //   const post = await getPosts((queryForSinglePost(postID)));
-      //   setSinglePost(post);
-      //  };
       const getPost = async () => 
       {
         let doesPostExist;
@@ -31,16 +26,12 @@ export const SinglePostView = () => {
           setSinglePost(post);
           return doesPostExist;
         }
-        // console.table({singlePost, doesPostExist}); 
-        //handle the err here - if didnt fetch any post ID
-      
         return post;
       }
       const isPostOk = await getPost();
       return isPostOk;
         
     } catch (err) {
-      // setErr(err?.response?.data?.message);
       setSinglePost({title:err})
       return err;
     }
@@ -51,15 +42,6 @@ export const SinglePostView = () => {
     return () => { isMounted = false };
     // eslint-disable-next-line
   }, []);
-  // 
-  // console.table(singlePost?.[0],err);
-  // console.log("params match title?", title);
-  //fetch just the one post matching the title/postID
-  // const titleForIframe = (singlePost[0].title === )
-
-
-  //check if theres a valid iframe link or render without it: singlePost.link && 
-  // console.log(singlePost)
   return (
     <div className="single-post-view">
       {(singlePost) ? 

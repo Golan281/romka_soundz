@@ -15,9 +15,7 @@ export const AboutPg = () => {
                 {aboutTxt}
             </p>
             <IframeTube/>
-            {/* <NavLink to="/subscribe" key="subscribe"> */}
                 <button className="btn form-btn" onClick={()=>nav('/subscribe')}>Subscribe</button>
-                {/* </NavLink>  */}
         </div>
     )
 }

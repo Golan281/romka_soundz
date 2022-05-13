@@ -16,7 +16,6 @@ export const BlogGrid = () => {
       const allPosts = await APIcontrol.getPosts(
         APIcontrol.queryForAll
       );
-      // console.log('base posts>',allPosts)
       setPosts([...allPosts]);
       return allPosts;
     } catch (err) {
@@ -26,7 +25,6 @@ export const BlogGrid = () => {
   };
   useEffect(() => {
     handlePosts();
-    // console.log(posts)
     // eslint-disable-next-line
   }, []);
 

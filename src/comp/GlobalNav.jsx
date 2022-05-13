@@ -13,7 +13,6 @@ export const GlobalNav = () => {
         </NavLink>
         <NavLink to="./blog">
           <button className="btn">Blog</button>
-          {/* <NavLink to="./:blogId" /> */}
         </NavLink>
         <NavLink to="./subscribe">
           <button className="btn">Subscribe</button>
