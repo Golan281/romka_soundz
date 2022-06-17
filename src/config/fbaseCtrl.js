@@ -1,4 +1,4 @@
-
+import env from "react-dotenv";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, query, where, getDocs, addDoc,  } from "firebase/firestore";
 
@@ -7,13 +7,13 @@ import { getStorage, uploadBytes, getDownloadURL, ref } from "firebase/storage";
 import * as helperProps from "../lib/helpers";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA3-3nse4C_1Q3-cmwBBY9SdbVzv2DHgb8",
-  authDomain: "romka-soundz.firebaseapp.com",
+  apiKey: env.REACT_APP_API_KEY,
+  authDomain: env.REACT_APP_DOMAIN,
   projectId: "romka-soundz",
-  storageBucket: "romka-soundz.appspot.com",
-  messagingSenderId: "348076290336",
-  appId: "1:348076290336:web:95e0b6a266afee3c33e745",
-  measurementId: "G-WH7Z62VK1P"
+  storageBucket: env.REACT_APP_BUCKET,
+  messagingSenderId: env.REACT_APP_SENDER_ID,
+  appId: env.REACT_APP_APP_ID,
+  measurementId: env.REACT_APP_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
