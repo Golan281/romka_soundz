@@ -1,5 +1,4 @@
 import { Logo } from './comp/Logo';
-import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { GlobalNav } from './comp/GlobalNav';
 import { GlobalFooter } from './comp/GlobalFooter';
@@ -8,20 +7,24 @@ import { BlogGrid } from './comp/BlogGrid';
 import { MusicHub } from './comp/MusicHub';
 import { Sub } from './comp/Sub';
 import { Admin } from './comp/Admin';
-import { ParticlesComp } from './comp/ParticlesComp';
 import { NotFound } from './comp/NotFound';
 import { SinglePostView } from './comp/SinglePostView';
-import React from 'react';
-
+import React, { Suspense } from "react";
+import './App.css';
 import { BlogContext } from "./contexts/BlogContext";
 import { useBlog } from "./hooks/useBlog";
+
+const ParticlesComp = React.lazy(() => import("./comp/ParticlesComp"));
+
 
 function App() {
   const blogContext = useBlog();
   return (
       <div className="App">
         <header className="App-header"> 
+        <Suspense fallback={<div>Loading...</div>}>
           <ParticlesComp />
+        </Suspense>
           <Logo />
           <GlobalNav />
           <BlogContext.Provider value={blogContext}>

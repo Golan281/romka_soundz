@@ -1,7 +1,7 @@
 
 import React from "react";
 import Particles from "react-tsparticles";
-export const ParticlesComp = () => {
+const ParticlesComp = () => {
   const particlesInit = (main) => {
     return main;
   };
@@ -97,3 +97,5 @@ export const ParticlesComp = () => {
     />
   );
 };
+
+export default ParticlesComp;

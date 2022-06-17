@@ -1,4 +1,4 @@
-export const IframeTube = () => {
+const IframeTube = () => {
 
     return (
         <div>
@@ -8,3 +8,4 @@ export const IframeTube = () => {
     )
 }
 
+export default IframeTube;

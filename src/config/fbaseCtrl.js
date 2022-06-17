@@ -24,6 +24,7 @@ const auth = getAuth();
 
 export const APIcontrol = {
   queryForAll: query(collection(DB, "romkaDB")),
+  queryForSubs: query(collection(DB, "subscribeDB")),
   queryForSinglePost: (postID) => {
     return query((collection(DB, "romkaDB")), where("postID", "==", `${postID}`))
   },
@@ -37,8 +38,9 @@ export const APIcontrol = {
       });
     }
     )
-    return fetchedPosts;
+    return fetchedPosts.reverse();
   },
+
   uploadPost: async (userInputObj) => {
     try {
       await addDoc(collection(DB, "romkaDB"), userInputObj);
