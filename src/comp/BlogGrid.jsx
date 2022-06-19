@@ -2,11 +2,14 @@ import React, {
   useState,
   useEffect,
   useContext,
+  Suspense,
 } from "react";
-import { BlogPost } from "./BlogPost";
 import { APIcontrol } from "../config/fbaseCtrl";
 import { Outlet } from "react-router-dom";
 import { BlogContext } from "../contexts/BlogContext";
+// import { BlogPost } from "./BlogPost";
+const BlogPost = React.lazy(() => import("./BlogPost"));
+
 
 export const BlogGrid = () => {
   const [err, setErr] = useState("");
@@ -40,9 +43,11 @@ export const BlogGrid = () => {
         <div
         key={eachPost.postID}
         >
+          <Suspense fallback={<div>Loading...</div>}>
           <BlogPost
             props={eachPost}
           ></BlogPost>
+          </Suspense>
         </div>
       ))}
       <Outlet />

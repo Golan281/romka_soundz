@@ -1,4 +1,4 @@
-export const Iframe = ({props}) => {
+const Iframe = ({props}) => {
     const {h1, link} = props;
     return (
         <div>
@@ -9,3 +9,5 @@ export const Iframe = ({props}) => {
 
     )
 }
+
+export default Iframe;

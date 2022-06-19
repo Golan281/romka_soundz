@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 
-export const BlogPost = (props) => {
+const BlogPost = (props) => {
   const { title, desc, imgUrl, postID} = props.props;
 
   return (
@@ -27,3 +27,5 @@ export const BlogPost = (props) => {
     </div>
   );
 };
+
+export default BlogPost;
