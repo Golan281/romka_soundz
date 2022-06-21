@@ -13,7 +13,7 @@ import React, { Suspense } from "react";
 import './App.css';
 import { BlogContext } from "./contexts/BlogContext";
 import { useBlog } from "./hooks/useBlog";
-
+import Loading from 'react-simple-loading';
 const ParticlesComp = React.lazy(() => import("./comp/ParticlesComp"));
 
 
@@ -22,7 +22,10 @@ function App() {
   return (
       <div className="App">
         <header className="App-header"> 
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loading 
+    color={'#54ABAB'}
+    stroke={'10px'}
+    size={'100px'} />}>
           <ParticlesComp />
         </Suspense>
           <Logo />

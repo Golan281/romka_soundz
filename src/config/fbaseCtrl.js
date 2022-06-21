@@ -52,9 +52,18 @@ export const APIcontrol = {
   uploadSubscriber: async (userInputObj) => {
     try {
       const docRef = await addDoc(collection(DB, "subscribeDB"), userInputObj);
+      const emailTriggerObj = {
+        to: ['me@golandev.tech', 'roman050586@gmail.com'],
+        message: {
+          subject: "New subscriber to Romka Soundz!",
+          html: `<h1>Congrats! Please see the attached details:</h1><br><h2>Name: ${userInputObj.firstName} ${userInputObj.lastName}</h2><br><p>${userInputObj.email}</p><br><p><u>Did opt in for updates?</u> ${userInputObj.didOptIn}</p>`,
+        },
+      };
+      const emailRef = await addDoc(collection(DB, "mail"), emailTriggerObj);
+      console.log("Document written with ID: ", emailRef.id, 'and check firestore/email for the content sent');
       console.log("Document written with ID: ", docRef.id, 'and check firestore for the content sent');
     } catch (e) {
-      console.error("Error adding post: ", e);
+      console.error("Error adding doc & mail: ", e);
     }
   },
   googleLogin: async () => {

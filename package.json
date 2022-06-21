@@ -16,6 +16,7 @@
     "react-icons": "^4.3.1",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
+    "react-simple-loading": "0.0.3",
     "react-tsparticles": "^1.42.4",
     "sweetalert2": "^11.4.4",
     "uuidv4": "^6.2.12",
@@ -51,6 +52,13 @@
     "dotenv-webpack": "^7.1.0"
   },
   "react-dotenv": {
-    "whitelist": ["REACT_APP_API_KEY", "REACT_APP_DOMAIN", "REACT_APP_BUCKET", "REACT_APP_SENDER_ID", "REACT_APP_APP_ID", "REACT_APP_MEASUREMENT_ID"]
+    "whitelist": [
+      "REACT_APP_API_KEY",
+      "REACT_APP_DOMAIN",
+      "REACT_APP_BUCKET",
+      "REACT_APP_SENDER_ID",
+      "REACT_APP_APP_ID",
+      "REACT_APP_MEASUREMENT_ID"
+    ]
   }
 }

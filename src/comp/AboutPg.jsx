@@ -2,6 +2,7 @@
 import romka_main_websize from '../img/romka_main_websize.jpg';
 import { useNavigate } from 'react-router-dom';
 import React, { Suspense } from 'react';
+import Loading from 'react-simple-loading';
 const IframeTube = React.lazy(() => import("./Music/IframeTube"));
 
 export const AboutPg = () => {
@@ -11,14 +12,15 @@ export const AboutPg = () => {
 
     return (
         <div className='about-pg'>
-            <Suspense fallback={<div>Loading...</div>}>
-            <img className="img" src={romka_main_websize} alt="romka profile"></img>
-            </Suspense>
+            <Suspense fallback={<Loading 
+    color={'#54ABAB'}
+    stroke={'10px'}
+    size={'100px'} />}>
+            <img className="img" src={romka_main_websize} alt="romka profile" width="100%" height="100%"></img>
             <h1 className='h1-eng'>About Me</h1>
             <p className='rtl'>
                 {aboutTxt}
             </p>
-            <Suspense fallback={<div>Loading...</div>}>
             <IframeTube/>
             </Suspense>
                 <button className="btn form-btn" onClick={()=>nav('/subscribe')}>Subscribe</button>

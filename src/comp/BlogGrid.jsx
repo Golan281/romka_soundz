@@ -7,6 +7,7 @@ import React, {
 import { APIcontrol } from "../config/fbaseCtrl";
 import { Outlet } from "react-router-dom";
 import { BlogContext } from "../contexts/BlogContext";
+import Loading from 'react-simple-loading';
 // import { BlogPost } from "./BlogPost";
 const BlogPost = React.lazy(() => import("./BlogPost"));
 
@@ -43,7 +44,10 @@ export const BlogGrid = () => {
         <div
         key={eachPost.postID}
         >
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loading 
+    color={'#54ABAB'}
+    stroke={'10px'}
+    size={'100px'} />}>
           <BlogPost
             props={eachPost}
           ></BlogPost>

@@ -135,7 +135,7 @@ export const Sub = () => {
         <b>Submit</b>
       </button>
       <div>
-      <img src={vibe_websize} alt="romka in action" className="img" />
+      <img src={vibe_websize} alt="romka in action" className="img" width="100%" height="100%"/>
       </div>
     </div>
   );

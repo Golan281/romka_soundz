@@ -21,6 +21,8 @@ const BlogPost = (props) => {
           className="blog-img"
           src={imgUrl}
           alt={`${title}: blog post`}
+          width="100%" 
+          height="100%"
           ></img>
       </div>
       </NavLink>
