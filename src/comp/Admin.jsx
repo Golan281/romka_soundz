@@ -5,12 +5,6 @@ import * as helperProps from "../lib/helpers";
 import * as yup from 'yup';
 
 export const Admin = () => {
-//   const getSubs = async () => {
-//     const subData = await APIcontrol.getPosts(APIcontrol.queryForSubs);
-//     return subData;
-// }
-
-// console.log('grabbing subs:',getSubs());
 
   let schema = yup.object().shape({
     title: yup.string().required(),
