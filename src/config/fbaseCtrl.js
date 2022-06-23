@@ -53,7 +53,7 @@ export const APIcontrol = {
     try {
       const docRef = await addDoc(collection(DB, "subscribeDB"), userInputObj);
       const emailTriggerObj = {
-        to: ['me@golandev.tech', 'roman050586@gmail.com'],
+        to: [env.REACT_APP_ADMIN_MAIL, env.REACT_APP_OWNER_MAIL],
         message: {
           subject: "New subscriber to Romka Soundz!",
           html: `<h1>Congrats! Please see the attached details:</h1><br><h2>Name: ${userInputObj.firstName} ${userInputObj.lastName}</h2><br><p>${userInputObj.email}</p><br><p><u>Did opt in for updates?</u> ${userInputObj.didOptIn}</p>`,
