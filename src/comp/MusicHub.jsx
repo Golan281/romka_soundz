@@ -12,7 +12,6 @@ export const MusicHub = () => {
         color={'#54ABAB'}
         stroke={'10px'}
         size={'100px'} />}
-      key={eachLink.id}
       >
     <div>
       {links.map((eachLink) => (

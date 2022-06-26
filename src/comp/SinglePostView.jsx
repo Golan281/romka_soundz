@@ -2,6 +2,7 @@ import React, {useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { APIcontrol } from "../config/fbaseCtrl";
 
+
 export const SinglePostView = () => {
   const nav = useNavigate();
   const { postID } = useParams();

@@ -1,4 +1,4 @@
-import env from "react-dotenv";
+// import env from "react-dotenv";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, query, where, getDocs, addDoc,  } from "firebase/firestore";
 
@@ -7,13 +7,13 @@ import { getStorage, uploadBytes, getDownloadURL, ref } from "firebase/storage";
 import * as helperProps from "../lib/helpers";
 
 const firebaseConfig = {
-  apiKey: env.REACT_APP_API_KEY,
-  authDomain: env.REACT_APP_DOMAIN,
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_DOMAIN,
   projectId: "romka-soundz",
-  storageBucket: env.REACT_APP_BUCKET,
-  messagingSenderId: env.REACT_APP_SENDER_ID,
-  appId: env.REACT_APP_APP_ID,
-  measurementId: env.REACT_APP_MEASUREMENT_ID,
+  storageBucket: process.env.REACT_APP_BUCKET,
+  messagingSenderId: process.env.REACT_APP_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
@@ -53,7 +53,7 @@ export const APIcontrol = {
     try {
       const docRef = await addDoc(collection(DB, "subscribeDB"), userInputObj);
       const emailTriggerObj = {
-        to: [env.REACT_APP_ADMIN_MAIL, env.REACT_APP_OWNER_MAIL],
+        to: [process.env.REACT_APP_ADMIN_MAIL, process.env.REACT_APP_OWNER_MAIL],
         message: {
           subject: "New subscriber to Romka Soundz!",
           html: `<h1>Congrats! Please see the attached details:</h1><br><h2>Name: ${userInputObj.firstName} ${userInputObj.lastName}</h2><br><p>${userInputObj.email}</p><br><p><u>Did opt in for updates?</u> ${userInputObj.didOptIn}</p>`,
