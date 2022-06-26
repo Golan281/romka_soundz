@@ -8,7 +8,6 @@ import { APIcontrol } from "../config/fbaseCtrl";
 import { Outlet } from "react-router-dom";
 import { BlogContext } from "../contexts/BlogContext";
 import Loading from 'react-simple-loading';
-// import env from "react-dotenv";
 const BlogPost = React.lazy(() => import("./BlogPost"));
 
 
