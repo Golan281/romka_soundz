@@ -35,3 +35,16 @@ yarn-error.log*
 # /src/comp/ReactModal.jsx
 
 
+ -DESKTOP-VAN3GNT.gitignore
+.env.development
+.env.production
+notes-DESKTOP-VAN3GNT.md
+package-DESKTOP-VAN3GNT.json
+package-lock-DESKTOP-VAN3GNT.json
+public/env-DESKTOP-VAN3GNT.js
+src/comp/Admin-DESKTOP-VAN3GNT.jsx
+src/comp/BlogGrid-DESKTOP-VAN3GNT.jsx
+src/comp/MusicHub-DESKTOP-VAN3GNT.jsx
+src/comp/SinglePostView-DESKTOP-VAN3GNT.jsx
+src/config/fbaseCtrl-DESKTOP-VAN3GNT.js
+-DESKTOP-VAN3GNT.gitignore
